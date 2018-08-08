@@ -3,14 +3,14 @@ import   json
 
 class redfish_connect(object):
 
-    def __init__(self, host_ip):
+    def __init__(self, host_ip, username, password):
         r"""
         initialize redfish client connection to host.
         """
 
         self.base_url = "https://" + host_ip
-        self.username = "root"
-        self.password = "myPassword"
+        self.username = username
+        self.password = password
         self.default_prefix="/redfish/v1"
 
         self.robj = redfish.redfish_client(base_url=self.base_url,
@@ -29,8 +29,8 @@ class redfish_connect(object):
         """
         uri_path = '/redfish/v1/' + resource_path
         response = self.robj.get(uri_path)
-
-        print ("HTTPS response : %s" % str(response.status))
+        json_data = json.loads(response.text)
+        print json.dumps(json_data, sort_keys=True, indent=4)
 
         return response
 
