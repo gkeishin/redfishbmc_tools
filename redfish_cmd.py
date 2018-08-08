@@ -10,7 +10,7 @@ import redfish_resource_model_crawler
 
 parser = argparse.ArgumentParser(
     usage='%(prog)s [OPTIONS]',
-    description='Process cronus commands.',
+    description='Process redfish request.',
     formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     prefix_chars='-+')
 
