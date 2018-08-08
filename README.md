@@ -2,6 +2,9 @@
 A redfish tools for performing operation using redfish API from DMTF
 
 Refer for more on DMTF: https://github.com/DMTF/python-redfish-library
+   ```
+   $ pip install redfish
+   ```
 
 # Usage: #
 
@@ -22,7 +25,7 @@ optional arguments:
   --url URL             URL path /redfish/v1/<meta-data> (default: None)
 ```
 
-* For root:
+* For root: /redfish/v1/
 
 ```
     rango@ubuntu:~/redfishbmc_tools$ python redfish_cmd.py --target_ip xx.xx.xx.xx --url ""
@@ -61,7 +64,7 @@ optional arguments:
     }
 ```
 
-* For other resourse say "Systems"
+* For other resource say "Systems"
 
 ```
     rango@ubuntu:~/redfishbmc_tools$ python redfish_cmd.py --target_ip xx.xx.xx.xx --url "Systems"
