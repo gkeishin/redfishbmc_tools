@@ -1,5 +1,12 @@
-import   redfish
-import   json
+#!/usr/bin/env python
+
+r"""
+Redfish class wrapper using API.
+"""
+
+import redfish
+import json
+
 
 class redfish_connect(object):
 
@@ -11,7 +18,7 @@ class redfish_connect(object):
         self.base_url = "https://" + host_ip
         self.username = username
         self.password = password
-        self.default_prefix="/redfish/v1"
+        self.default_prefix = "/redfish/v1"
 
         self.robj = redfish.redfish_client(base_url=self.base_url,
                                            username=self.username,
@@ -21,7 +28,6 @@ class redfish_connect(object):
         self.robj.login(auth="session")
 
         self.session_key = self.robj.get_session_key()
-    
 
     def get_method(self, resource_path):
         r"""
@@ -34,13 +40,11 @@ class redfish_connect(object):
 
         return response
 
-
     def logout_session(self):
         r"""
         Logout redfish session.
         """
         self.robj.logout()
-
 
     def json_data(self, response):
         r"""
@@ -49,10 +53,8 @@ class redfish_connect(object):
         json_data = json.loads(response.text)
         return json_data
 
-
     def json_pretty_print(self, json_data):
         r"""
         JSON data pretty print the formatted output on console.
         """
         print json.dumps(json_data, sort_keys=True, indent=4)
-

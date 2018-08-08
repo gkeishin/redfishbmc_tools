@@ -60,4 +60,3 @@ def main():
 # Main
 if not main():
     exit(1)
-
