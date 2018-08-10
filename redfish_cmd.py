@@ -61,13 +61,26 @@ def main():
         resp = con.get_method(args.url)
         print json.dumps(resp, sort_keys=True, indent=4)
 
-    if args.op:
+    if args.op=="list":
         list_path = '/redfish/v1/' + args.url + '/list'
         print("\n%s\n" % list_path)
         resp = con.get_method(args.url)
         list_resp = get_url_list(resp)
         print('\n'.join(map(str, list_resp)))
 
+    if args.op=="enumerate":
+        list_path = '/redfish/v1/' + args.url + '/enumerate'
+        print("\n%s\n" % list_path)
+        resp = con.get_method(args.url)
+        list_resp = get_url_list(resp)
+        for enum in list_resp:
+            print("\n%s" % enum)
+            try:
+                resp = con.get_method(enum.replace("/redfish/v1/",""))
+                print json.dumps(resp, sort_keys=True, indent=4)
+            except:
+                # pass and continue with next resource.
+                continue
 
 # Main
 if not main():
