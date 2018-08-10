@@ -23,6 +23,7 @@ optional arguments:
   --password PASSWORD   BMC target password. (default: 0penBmc)
   --request REQUEST     GET, PUT, POST, PATCH, DELETE. (default: GET)
   --url URL             URL path /redfish/v1/<meta-data> (default: None)
+  --op OP               list, enumerate RESTful like (default: None)
 ```
 
 * For root: /redfish/v1/
