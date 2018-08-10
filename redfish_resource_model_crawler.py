@@ -5,14 +5,12 @@ Redfish function for traversing the resource model.
 """
 
 
-def get_url_list(json_data, base_uri="/redfish/v1/"):
+def get_url_list(json_data):
     r"""
     Return list of fully qualified URI paths.
 
     Description of argument(s):
     json_data        Dictionary data from "GET" request.
-    base_uri         Base path from which the resource is needed to identify
-                     (e.g. "/redfish/v1/", "/redfish/v1/Chassis" etc.).
 
     Resource model tree layout:
     root("/redfish/v1/") -> "/redfish/v1/Chassis" -> End resource
@@ -60,6 +58,7 @@ def get_url_list(json_data, base_uri="/redfish/v1/"):
                            '/redfish/v1/SessionService']
     """
 
+    base_uri = "/redfish/v1/"
     qualified_uri_list = []
 
     # Example of non-root child resource object schema.
@@ -104,7 +103,7 @@ def get_url_list(json_data, base_uri="/redfish/v1/"):
     # }
 
     # If non-root and is the last child resource.
-    if base_uri != "/redfish/v1/" and "Members" not in json_data:
+    if json_data["Name"] != "Root Service" and "Members" not in json_data:
         # Return empty list.
         return qualified_uri_list
 
