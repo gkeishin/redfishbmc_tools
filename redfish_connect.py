@@ -36,9 +36,9 @@ class redfish_connect(object):
         uri_path = '/redfish/v1/' + resource_path
         response = self.robj.get(uri_path)
         json_data = json.loads(response.text)
-        print json.dumps(json_data, sort_keys=True, indent=4)
+        #print json.dumps(json_data, sort_keys=True, indent=4)
 
-        return response
+        return json_data 
 
     def logout_session(self):
         r"""

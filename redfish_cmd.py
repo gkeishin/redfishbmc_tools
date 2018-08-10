@@ -5,8 +5,8 @@ Command line tool to process redfish related operations.
 """
 
 import argparse
-import redfish_connect as redcon
-import redfish_resource_model_crawler
+from redfish_connect import *
+from redfish_resource_model_crawler import *
 
 parser = argparse.ArgumentParser(
     usage='%(prog)s [OPTIONS]',
@@ -33,13 +33,17 @@ parser.add_argument(
 
 parser.add_argument(
     '--request',
-    default='GET',
     help='GET, PUT, POST, PATCH, DELETE.'
 )
 
 parser.add_argument(
     '--url',
     help='URL path /redfish/v1/<meta-data>'
+)
+
+parser.add_argument(
+    '--op',
+    help='list, enumerate RESTful like'
 )
 
 args = parser.parse_args()
@@ -51,10 +55,18 @@ def main():
     """
     print ("IP: %s" % (args.target_ip))
 
-    con = redcon.redfish_connect(args.target_ip, args.username, args.password)
+    con = redfish_connect(args.target_ip, args.username, args.password)
 
     if args.request == "GET":
-        con.get_method(args.url)
+        resp = con.get_method(args.url)
+        print json.dumps(resp, sort_keys=True, indent=4)
+
+    if args.op:
+        list_path = '/redfish/v1/' + args.url + '/list'
+        print("\n%s\n" % list_path)
+        resp = con.get_method(args.url)
+        list_resp = get_url_list(resp)
+        print('\n'.join(map(str, list_resp)))
 
 
 # Main
