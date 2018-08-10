@@ -61,6 +61,7 @@ def main():
         resp = con.get_method(args.url)
         print json.dumps(resp, sort_keys=True, indent=4)
 
+    # Do the RESTful list.
     if args.op=="list":
         list_path = '/redfish/v1/' + args.url + '/list'
         print("\n%s\n" % list_path)
@@ -68,6 +69,7 @@ def main():
         list_resp = get_url_list(resp)
         print('\n'.join(map(str, list_resp)))
 
+    # Do the RESTful enumerate.
     if args.op=="enumerate":
         list_path = '/redfish/v1/' + args.url + '/enumerate'
         print("\n%s\n" % list_path)
