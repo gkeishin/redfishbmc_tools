@@ -29,7 +29,7 @@ optional arguments:
 * For root: /redfish/v1/
 
 ```
-    $ redfishbmc_tools$ python redfish_cmd.py --target_ip xx.xx.xx.xx --request GET --url ""
+    $ python redfish_cmd.py --target_ip xx.xx.xx.xx --request GET --url ""
     IP: xx.xx.xx.xx
     {
         "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot", 
@@ -68,7 +68,7 @@ optional arguments:
 * For other resource say "Systems"
 
 ```
-    $ redfishbmc_tools$ python redfish_cmd.py --target_ip xx.xx.xx.xx --request GET --url "Systems"
+    $ python redfish_cmd.py --target_ip xx.xx.xx.xx --request GET --url "Systems"
     IP: xx.xx.xx.xx
     {
         "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection", 
@@ -87,7 +87,7 @@ optional arguments:
 * For resource listing
 
 ```
-    $ redfishbmc_tools$ python redfish_cmd.py --target_ip xx.xx.xx.xx --url "" --op list
+    $ python redfish_cmd.py --target_ip xx.xx.xx.xx --url "" --op list
     IP: xx.xx.xx.xx
 
     /redfish/v1/list
