@@ -27,7 +27,7 @@ parser.add_argument(
 
 parser.add_argument(
     '--password',
-    default='0penBmc',
+    default='myPassword',
     help='BMC target password.'
 )
 
